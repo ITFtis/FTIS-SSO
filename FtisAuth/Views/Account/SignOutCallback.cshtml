@@ -1,0 +1,57 @@
+﻿@{
+    //Layout = null;
+    ViewBag.Title = "登出";
+    
+}
+<style>
+    header, footer > * {
+        display: none;
+    }
+    .img-header {
+        padding: 2rem 3rem 1rem 2rem;
+        box-shadow: 0 4px 8px -7px black;
+        width: 100%;
+        margin-bottom:1.5rem;
+    }
+    .img-header >img{
+        width:auto;
+    }
+    .img-logoff{
+        width:350px;
+    }
+    @@media(max-width: 350px) {
+        .img-logoff {
+            width: 250px;
+        }
+    }
+    .msg-content > *:not(:last-child) {
+        margin-bottom: 20px;
+    }
+    .fixed-top + .body-content {
+        padding-top:0;
+    }
+</style>
+<div class="img-header row">
+    <img src="~/Images/ftis-title.png">
+</div>
+<div class="msg-content" style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
+    <img class="img-logoff" src="~/Images/logoff.png">
+    @*<h3>@(ViewBag.Name) 您好</h3>*@
+    
+    <h2 class="text-success">
+        <span>@(ViewBag.Name) 您好, 已成功登出系統!!</span>
+    </h2>
+    
+    <h4>
+        如欲再使用本系統，請您
+        @if (ViewBag.RebackUrl != null)
+        {
+            <a href="@ViewBag.RebackUrl">重新登入</a>
+        }
+        else
+        {
+            @Html.ActionLink("重新登入", "Index", "Account")
+        }
+        ，若您不再使用本系統，請您記得關閉視窗，以確保資料不致外洩
+    </h4>
+</div>

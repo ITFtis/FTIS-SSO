@@ -1,0 +1,225 @@
+﻿
+@model FtisAuth.Controllers.Ad.PwdController.ADUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="SHORTCUT ICON" href="~/images/logo.ico" data-logo />
+    <title>變更密碼</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Scripts/gis/b3/css/bootstrap.css" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <style>
+        body {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: lightgray;
+        }
+
+        .dou-login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .title-logo-container {
+            flex: 1;
+            display: block;
+            font-size: 3rem;
+            /*padding-top: 5vh;*/
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title-logo-container > * {
+            text-shadow: .1vw .1vw .2vw #a6a9aa,-.1vw -.1vw .2vw #a6a9aa;
+            font-weight: bold;
+            color: #0f4b8a;
+        }
+
+        .dou-login-container .form-container {
+            flex: auto;
+            z-index: 99;
+        }
+
+        .dou-login-container form {
+            /*min-width: 300px;*/
+            padding: 2rem 2rem;
+            border: 1px #ddd solid;
+            border-radius: .5rem;
+            background: rgba(166,169,170,.5);
+        }
+
+            .dou-login-container form input {
+                width: 320px !important;
+                border-radius: 0.375rem !important;
+            }
+
+        .form-container .btn {
+            width: 100%;
+        }
+
+        .input-group-addon {
+            z-index: 99;
+        }
+
+        .toggle-password {
+            margin-left: -2.5em;
+            cursor: pointer;
+            line-height: 1.5;
+            border: none;
+            background-color: transparent;
+            color: gray;
+        }
+
+
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+        .form-container  .btn {
+            margin-top: 1rem;
+        }
+
+        hr {
+            border-top: 2px solid rgba(255, 255, 255, 1);
+            margin-top: -0.4rem;
+            margin-bottom: .625rem;
+        }
+
+        #Password {
+            border-radius: .375rem;
+            z-index: 1;
+        }
+
+        .bg-container {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        ol {
+            font-weight: bold;
+        }
+
+        @@media(max-width: 512px) {
+            .title-logo-container {
+                font-size: 2rem;
+            }
+
+            .dou-login-container {
+                display: block;
+            }
+
+                .dou-login-container .form-container {
+                    width: 92%;
+                    margin: 0 auto;
+                }
+
+                .dou-login-container form {
+                    padding: 1rem 1.5rem;
+                }
+
+                    .dou-login-container form input {
+                        width: 100% !important;
+                        max-width: 100% !important;
+                    }
+        }
+
+
+        @@media(max-height: 700px) {
+            .dou-login-container {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-container bg-image"><div class=""></div></div>
+    <div class="dou-login-container">
+
+
+        <div class="title-logo-container">
+            @*<div><img src="~/images/title.svg"></div>*@
+            <label>Ftis AD 密碼變更</label>
+        </div>
+        <div class="form-container">
+            @************重設User controller****************@
+            @using (Html.BeginForm("Change", "Pwd", new { ReturnUrl = ViewBag.ReturnUrl, re = true }, FormMethod.Post))
+            {
+                <h4>變更AD密碼</h4>
+                <hr>
+                if (ViewBag.ErrorMessage != null)
+                {
+                    <label style="color:red">@Html.Raw( ViewBag.ErrorMessage)</label>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Account, new { @class = " control-label" })
+
+                    @Html.TextBoxFor(m => m.Account, new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.OldPassword, new { @class = "control-label" })
+                    <div class="input-group">
+                        @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+                        <span class="input-group-addon">
+                            <i class="glyphicon  glyphicon-eye-open  glyphicon-eye-close toggle-password input-group-text" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NewPassword, new { @class = "control-label" })
+                    <div class="input-group">
+                        @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                        <span class="input-group-addon">
+                            <i class="glyphicon  glyphicon-eye-open  glyphicon-eye-close toggle-password input-group-text" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                    <div class="input-group">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        <span class="input-group-addon">
+                            <i class="glyphicon  glyphicon-eye-open  glyphicon-eye-close toggle-password input-group-text" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success col-sm-12" value="@ViewBag.ReturnUrl"> 送 出 </button>
+                <div class="clearfix"></div>
+            }
+        </div>
+        <ul>
+            密碼原則
+            <li>同時涵蓋以下四種的組合，含英文大、小寫、數字、符號</li>
+            <li>長度至少12(含)碼</li>
+            <li>不可包含帳號</li>
+            <li>每次變更密碼至少間格24小時</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $('.toggle-password').click(function () {
+            $(this).toggleClass('glyphicon-eye-close')
+            //$(this).attr('type', $(this).hasClass('glyphicon-eye-close') ? 'password' : 'text');
+            console.log($(this).hasClass('glyphicon-eye-close'));
+            $(this).closest('.input-group').find('input')
+                .attr('type', $(this).hasClass('glyphicon-eye-close') ? 'password' : 'text').focus();
+        })
+    });
+</script>

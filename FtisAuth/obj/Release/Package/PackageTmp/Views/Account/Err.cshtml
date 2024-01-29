@@ -1,0 +1,20 @@
+﻿@model FtisAuth.Models.Manager.User
+@{
+    ViewBag.Title = "訊息";
+}
+<div style="display:flex; justify-content:center; align-items:center; flex-direction:column;height:100%">
+    @if (!string.IsNullOrEmpty( ViewBag.Msg))
+    {
+        <h3>@ViewBag.Msg</h3>
+    }
+    else
+    {
+        <h3>登入錯誤</h3>
+    }
+    <h2 style="text-align: center;">
+        <b style="color:red">@ViewBag.Errmsg</b>
+    </h2>
+    <h3>因異常登入，請關閉視窗重新登入系統</h3>
+</div>
+
+

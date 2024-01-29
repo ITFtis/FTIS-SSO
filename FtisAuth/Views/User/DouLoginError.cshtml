@@ -1,0 +1,21 @@
+﻿@model FtisAuth.Models.Manager.User
+@{
+    ViewBag.Title = "DouLoginError";
+}
+<div style="display:flex; justify-content:center; align-items:center; flex-direction:column;height:100%">
+    <h3>@Model.Name 您好</h3>
+    <h2 style="text-align: center;">
+        <b style="color:red">@ViewBag.ErrorMessage</b>
+        @if (ViewBag.ErrorMessage.IndexOf("尚未授權") >= 0)
+        {
+            <br><span>您的登入申請已經送審中<br>請通知資訊室相關人員<br>系統管理員會將您帳號進行開通作業<br>謝謝您</span>
+        }
+        else
+        {
+            <br><span>請通知資訊室系統管理員，謝謝您</span>
+        }
+    </h2>
+    <h3><a href="@ViewBag.LoginUrl">請稍後再登入</a></h3>
+</div>
+
+

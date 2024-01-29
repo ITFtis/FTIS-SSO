@@ -1,0 +1,45 @@
+﻿@model FtisAuth.Controllers.Ad.PwdController.ADUser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="SHORTCUT ICON" href="~/images/logo.ico" data-logo />
+    <title>密碼變更成功</title>
+    <style>
+        .msg {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            align-items: center;
+            min-height: 300px;
+            height: 100%;
+        }
+
+            .msg label {
+                text-align: center;
+                vertical-align: middle;
+            }
+
+        @@media(max-width: 512px) {
+            .msg {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="msg">
+        <label>
+            @Model.Name , <span style="color:blue;">密碼變更成功!!</span>
+        </label>
+    </div>
+</body>
+</html>
